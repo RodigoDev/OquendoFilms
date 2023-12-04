@@ -1,5 +1,5 @@
 .field {
-	margin-bottom: 35px;
+	margin-bottom: 30px;
 }
 
 .field label{
@@ -14,7 +14,7 @@
 	background-color: #fff;
 	outline: 0;
 	font-size: 18px;
-	padding: 12px 30px;
+	padding: 12px 15px;
 	border: 2px solid rgb(34, 34, 34, 0.25);
 	color:#222;
 	border-radius: 5px;

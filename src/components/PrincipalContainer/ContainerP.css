@@ -1,0 +1,12 @@
+.containerP {
+    display: flex;
+    margin: 1.5%;
+    padding-top: 25;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 600px) {
+    .containerP {
+      padding: 10px;
+    }
+  }
