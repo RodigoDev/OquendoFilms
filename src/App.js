@@ -14,9 +14,9 @@ function App() {
   const [usuarios, setUsuarios] = useState([])
   const [formulario, handleChange, reset] = useFormulario({
     name: '',
-    lastname: '',
     email: '',
-    phone: ''
+    phone: '',
+    date: ''
   })
 
   const submit = e => {
@@ -25,7 +25,25 @@ function App() {
       ...usuarios,
       formulario,
     ]);
-    reset()
+    
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: formulario.name,
+        email: formulario.email,
+        phone: formulario.phone,
+        date: formulario.date,
+    })
+  };
+
+    fetch('http://localhost:8080/reservation', requestOptions)
+        .then(response => response.json())
+        .then(result => {
+           console.log(result)
+           reset()
+        })
+        .catch(err => alert(err)) ;
   }
   console.log(formulario, usuarios)
 
@@ -56,11 +74,6 @@ function App() {
                     onChange={handleChange}
                     placeholder='Name' />
                   <Input
-                    name="lastname"
-                    value={formulario.lastname}
-                    onChange={handleChange}
-                    placeholder='Lastname' />
-                  <Input
                     name="email"
                     value={formulario.email}
                     onChange={handleChange}
@@ -70,6 +83,11 @@ function App() {
                     value={formulario.phone}
                     onChange={handleChange}
                     placeholder='Phone' />
+                     <Input
+                    name="date"
+                    value={formulario.date}
+                    onChange={handleChange}
+                    placeholder='Date' />
                   <Button>
                     Reservar
                   </Button>
